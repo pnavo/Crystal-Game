@@ -3,7 +3,7 @@ var wins = 0;
 var losses = 0;
 
 //Current score
-var score = 0;
+var addition = 0;
 
 //selects a random number from 19 t0 120
 var total = Math.floor((Math.random()* 100) + 19);
@@ -15,7 +15,7 @@ var yellow = Math.floor((Math.random()* 12) + 1);
 var green = Math.floor((Math.random()* 12) + 1);
 
 //updates addition in html
-var updateScore = function (){
+var updateAddition = function (){
 	$('.addition').empty();
 	$('.addition').append(addition);
 	$('#wins').empty();
@@ -26,7 +26,7 @@ var updateScore = function (){
 
 //Reset
 var reset = function(){
-	score = 0;
+	addition = 0;
     total = Math.floor((Math.random()* 100) + 19);
 
 	$('.total').empty();
@@ -43,30 +43,30 @@ var reset = function(){
     console.log("Yellow: " + yellow);
     console.log("Green: " + green);
     console.log("Blue: " + blue);
-    updateScore();
+    updateAddition();
 }
 var add = function (){
-	if (score == total) {
+	if (addition == total) {
 		wins = wins + 1;
 		alert("You won! Well done! :D ")
 		reset();
 	}
-	else if(score > total){
+	else if(addition > total){
 		losses = losses + 1;
 		alert("You lost...Better luck next time! :( ")
 		reset();
 	}
 	else{
-		updateScore();
+		updateAddition();
 	}
 }
 $('.total').append(total);
 
-$('.addition').append(score);
+$('.addition').append(addition);
 
 $(document).ready(function(){
 	$('#red').click(function(){
-		ascore = score + red;
+		addition = addition + red;
 		add();
 	})
 	$('#blue').click(function(){
